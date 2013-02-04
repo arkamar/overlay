@@ -22,6 +22,7 @@ RDEPEND="
 	dev-libs/libxml2
 	dev-libs/tinyxml
 	dev-libs/protobuf
+	dev-libs/libtar
 	>=dev-libs/boost-1.40.0
 	dev-cpp/tbb
 	media-libs/openal
