@@ -6,6 +6,7 @@
 	<name>Aaron Mavrinac</name>
 </maintainer>
 <use>
+	<flag name="cegui">Build with cegui</flag>
 	<flag name="player">Build plugin for Player</flag>
 </use>
 </pkgmetadata>

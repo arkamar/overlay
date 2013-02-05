@@ -4,7 +4,7 @@
 
 EAPI=4
 
-inherit eutils qt4-r2 cmake-utils
+inherit cmake-utils
 
 MY_P=${PN}-${PV/_rc/-RC}
 
@@ -15,46 +15,30 @@ SRC_URI="${HOMEPAGE}/assets/distributions/${MY_P}.tar.bz2"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="doc player"
+IUSE="doc player cegui"
 
 RDEPEND="
-	x11-libs/qt-gui:4
-	dev-libs/libxml2
-	dev-libs/tinyxml
-	dev-libs/protobuf
-	dev-libs/libtar
-	>=dev-libs/boost-1.40.0
-	dev-cpp/tbb
-	media-libs/openal
-	media-video/ffmpeg
-	media-libs/freeglut
-	>=media-libs/freeimage-3.9.0
-	|| ( >=dev-games/ode-0.11.1 sci-physics/bullet )
 	>=dev-games/ogre-1.7.1[freeimage,cg]
-	dev-games/cegui
+	>=dev-libs/protobuf-2.3
+	>=dev-libs/tinyxml-2.6.2
+	>=dev-libs/libxml2-2.7.7
+	dev-libs/libtar
+	>=dev-cpp/tbb-3
+	>=dev-libs/boost-1.40.0
+	cegui? ( >=dev-games/cegui-0.7.5 )
 	player? ( sci-electronics/player )
 "
+
 DEPEND="${RDEPEND}
 	doc? ( app-doc/doxygen )
 "
 
 S=${WORKDIR}/${MY_P}
 
-src_configure() {
-	local mycmakeargs=(
-		$(cmake-utils_use player INCLUDE_PLAYER)
-	)
-
-	# dev-libs/tinyxml doesn't provide a pkg-config file, and needs to be
-	# compatible with std::string
-	mycmakeargs+=(
-		"-Dtinyxml_include_dirs=/usr/include"
-		"-Dtinyxml_library_dirs=/usr/lib"
-		"-Dtinyxml_libraries=/usr/lib/libtinyxml.so"
-		"-Dtinyxml_cflags=-DTIXML_USE_STL"
-	)
-
-	cmake-utils_src_configure
+src_unpack() {
+	unpack ${A}
+	cd ${S}
+	epatch ${FILESDIR}/gazebo-1.4.0-stdint.patch
 }
 
 src_compile() {
