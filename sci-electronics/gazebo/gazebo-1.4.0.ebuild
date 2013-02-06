@@ -6,11 +6,9 @@ EAPI=4
 
 inherit cmake-utils
 
-MY_P=${PN}-${PV/_rc/-RC}
-
 DESCRIPTION="A 3D multiple robot simulator with dynamics."
 HOMEPAGE="http://gazebosim.org"
-SRC_URI="${HOMEPAGE}/assets/distributions/${MY_P}.tar.bz2"
+SRC_URI="${HOMEPAGE}/assets/distributions/${P}.tar.bz2"
 
 LICENSE="Apache-2.0"
 SLOT="0"
@@ -33,8 +31,6 @@ DEPEND="${RDEPEND}
 	doc? ( app-doc/doxygen )
 "
 
-S=${WORKDIR}/${MY_P}
-
 src_unpack() {
 	unpack ${A}
 	cd ${S}
@@ -53,7 +49,7 @@ src_compile() {
 src_install() {
 	cmake-utils_src_install
 
-	echo "GAZEBO_RESOURCE_PATH=\"/usr/share/${MY_P}\"" > "${T}"/50gazebo
+	echo "GAZEBO_RESOURCE_PATH=\"/usr/share/${P}\"" > "${T}"/50gazebo
 	echo "OGRE_RESOURCE_PATH=\"/usr/$(get_libdir)/OGRE\"" >> "${T}"/50gazebo
 	doenvd "${T}"/50gazebo
 
