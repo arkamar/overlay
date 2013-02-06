@@ -1,7 +1,7 @@
 From ad312df78240cbbb9dd9a24a2daeaa7db4fa195a Mon Sep 17 00:00:00 2001
 From: =?UTF-8?q?Petr=20Van=C4=9Bk?= <vanekpe5@fel.cvut.cz>
 Date: Tue, 5 Feb 2013 11:00:06 +0100
-Subject: [PATCH] Prepared for patch
+Subject: [PATCH] included stdint.h
 
 ---
  gazebo/physics/bullet/BulletPhysics.cc                 | 4 ++--

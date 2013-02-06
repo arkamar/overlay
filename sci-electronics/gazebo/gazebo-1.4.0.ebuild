@@ -12,7 +12,7 @@ DESCRIPTION="A 3D multiple robot simulator with dynamics."
 HOMEPAGE="http://gazebosim.org"
 SRC_URI="${HOMEPAGE}/assets/distributions/${MY_P}.tar.bz2"
 
-LICENSE="GPL-2"
+LICENSE="Apache-2.0"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="doc player cegui"
