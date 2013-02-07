@@ -13,7 +13,7 @@ SRC_URI="${HOMEPAGE}/assets/distributions/${P}.tar.bz2"
 LICENSE="Apache-2.0"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="doc player cegui"
+IUSE="doc player cegui sse4"
 
 RDEPEND="
 	>=dev-games/ogre-1.7.1[freeimage,cg]
@@ -31,16 +31,18 @@ DEPEND="${RDEPEND}
 	doc? ( app-doc/doxygen )
 "
 
-#CMAKE_VERBOSE=OFF
-
 src_unpack() {
 	unpack ${A}
 	cd ${S}
-	epatch ${FILESDIR}/gazebo-1.4.0-stdint.patch
+	epatch ${FILESDIR}/${P}-stdint.patch
+	epatch ${FILESDIR}/${P}-cmake.patch
 }
 
 src_configure() {
-	append-flags -msse -msse2 -mfpmath=sse
+	local mycmakeargs=(
+		$(cmake-utils_use_enable sse4 SSE4)
+	)
+
 	cmake-utils_src_configure
 }
 
