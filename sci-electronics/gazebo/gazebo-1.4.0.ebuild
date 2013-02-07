@@ -31,10 +31,17 @@ DEPEND="${RDEPEND}
 	doc? ( app-doc/doxygen )
 "
 
+#CMAKE_VERBOSE=OFF
+
 src_unpack() {
 	unpack ${A}
 	cd ${S}
 	epatch ${FILESDIR}/gazebo-1.4.0-stdint.patch
+}
+
+src_configure() {
+	append-flags -msse -msse2 -mfpmath=sse
+	cmake-utils_src_configure
 }
 
 src_compile() {
