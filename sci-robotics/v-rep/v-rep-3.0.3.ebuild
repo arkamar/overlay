@@ -9,7 +9,7 @@ DESCRIPTION="A 3D robot simulator"
 HOMEPAGE="http://www.v-rep.eu"
 SRC_URI="http://coppeliarobotics.com/V-REP_SOURCE_V3_0_3.zip"
 SLOT=0
-KEYWORDS="amd64"
+KEYWORDS="amd64 x86"
 
 RDEPEND="
 	dev-libs/boost
