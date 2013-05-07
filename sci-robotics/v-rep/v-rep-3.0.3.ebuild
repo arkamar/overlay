@@ -5,11 +5,12 @@
 EAPI=5
 inherit qt4-r2
 
-DESCRIPTION="A 3D robot simulator"
-HOMEPAGE="http://www.v-rep.eu"
-SRC_URI="http://coppeliarobotics.com/V-REP_SOURCE_V3_0_3.zip"
+DESCRIPTION="Virtual robot experimentation platform"
+HOMEPAGE="http://coppeliarobotics.com"
+SRC_URI="${HOMEPAGE}/V-REP_PRO_EDU_V3_0_3_Linux.tar.gz"
 SLOT=0
 KEYWORDS="amd64 x86"
+LICENSE="GPL-3 LGPL-2.1 LGPL-3 V-REP_PRO_EDU V-REP_PLUGIN"
 
 RDEPEND="
 	dev-libs/boost
@@ -20,8 +21,13 @@ RDEPEND="
 
 DEPEND="${RDEPEND}"
 
+#	 ${A}  : V-REP_SOURCE_V3_0_3.zip
+#	 ${P}  : v-rep-3.0.3
+#	 ${PN} : v-rep
+#	 ${PV} :	3.0.3
+#	 ${S}  : /var/tmp/portage/sci-robotics/v-rep-3.0.3/work/v-rep-3.0.3
+
 src_unpack() {
-	echo ${A} # V-REP_SOURCE_V3_0_3.zip
-	echo ${P} # v-rep-3.0.3
-	echo ${S} # /var/tmp/portage/sci-robotics/v-rep-3.0.3/work/v-rep-3.0.3
+	unpack ${A}
+	cd ${S}/V-REP_PRO_EDU_V3_0_3_Linux/programming/v_repClientApplication
 }
