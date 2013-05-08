@@ -1,0 +1,24 @@
+From 926ef201c5fd7a286c53dcf319c6e8096ac7d696 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Petr=20Van=C4=9Bk?= <vanekpe5@fel.cvut.cz>
+Date: Wed, 8 May 2013 21:54:02 +0200
+Subject: [PATCH] include inttypes.h
+
+---
+ dynamicsPlugin/sourceCode/dynamics/ode/src/objects.h | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/dynamicsPlugin/sourceCode/dynamics/ode/src/objects.h b/dynamicsPlugin/sourceCode/dynamics/ode/src/objects.h
+index c313194..db71d40 100644
+--- a/dynamicsPlugin/sourceCode/dynamics/ode/src/objects.h
++++ b/dynamicsPlugin/sourceCode/dynamics/ode/src/objects.h
+@@ -29,6 +29,7 @@
+ #include <ode/common.h>
+ #include <ode/memory.h>
+ #include <ode/mass.h>
++#include <inttypes.h>
+ #include "array.h"
+ 
+ class dxStepWorkingMemory;
+-- 
+1.8.1.5
+
