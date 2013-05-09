@@ -50,6 +50,8 @@ src_prepare() {
 	rm $(find . -name "*.so*")
 	epatch ${FILESDIR}/${P}-lua.patch
 	epatch ${FILESDIR}/${P}-IDSN.patch
+	epatch ${FILESDIR}/${P}-lib.pro.patch
+	epatch ${FILESDIR}/${P}-lib.patch
 	use dynamic && epatch ${FILESDIR}/${P}-dynamics.patch
 	mkdir -p ${WORKDIR}/build
 }
@@ -58,6 +60,7 @@ src_configure() {
 	pwd
 	cd ${WORKDIR}/build
 	eqmake4 ${S}/programming/v_repClientApplication/vrep.pro
+	eqmake4 ${S}/v_rep/v_rep.pro -o Makefile.lib
 	use dynamic &&
 		eqmake4 ${S}/dynamicsPlugin/v_repExtDynamics.pro -o Makefile.dynamic
 	use mesh &&
@@ -69,17 +72,22 @@ src_configure() {
 src_compile() {
 	cd ${WORKDIR}/build
 	emake
-#	emake clean
+	emake -j1 -f Makefile.lib v_rep.gch/c v_rep.gch/c++
+	emake -f Makefile.lib
 	use dynamic && {
 		emake -f Makefile.dynamic
-#		emake -f Makefile.dynamic clean
 	}
 	use mesh && {
 		emake -f Makefile.mesh
-#		emake -f Makefile.mesh clean
 	}
 	use path && {
 		emake -f Makefile.path
-#		emake -f Makefile.path clean
 	}
+}
+
+src_install() {
+	dodir /usr/lib
+	cp ${WORKDIR}/build/*.so* ${D}/usr/lib/ || die "Install failed!"
+	dodir /usr/bin
+	cp ${WORKDIR}/build/vrep ${D}/usr/bin/ || die "Install failed!"
 }

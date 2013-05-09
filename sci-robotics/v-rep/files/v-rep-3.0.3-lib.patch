@@ -1,0 +1,152 @@
+From 1e834c68663500b6740520408183bde0bd0e2697 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Petr=20Van=C4=9Bk?= <vanekpe5@fel.cvut.cz>
+Date: Thu, 9 May 2013 00:35:46 +0200
+Subject: [PATCH] lib
+
+---
+ v_rep/sourceCode/3dObjects/proximitySensor.cpp     |  1 +
+ v_rep/sourceCode/collisions/RegColl.cpp            |  1 +
+ v_rep/sourceCode/distances/RegDist.cpp             |  1 +
+ v_rep/sourceCode/scintillaRelated/ScintillaDlg.cpp | 30 +++++++++++-----------
+ .../scintillaRelated/ScintillaModalDlg.cpp         | 30 +++++++++++-----------
+ 5 files changed, 33 insertions(+), 30 deletions(-)
+
+diff --git a/v_rep/sourceCode/3dObjects/proximitySensor.cpp b/v_rep/sourceCode/3dObjects/proximitySensor.cpp
+index 53655f3..ee3f33d 100644
+--- a/v_rep/sourceCode/3dObjects/proximitySensor.cpp
++++ b/v_rep/sourceCode/3dObjects/proximitySensor.cpp
+@@ -36,6 +36,7 @@
+ #include "Ct.h"
+ #include "VDateTime.h"
+ #include "collDistInterface.h"
++#include "sensingThreadPool.h"
+ 
+ 
+ CProxSensor::CProxSensor(int theType)
+diff --git a/v_rep/sourceCode/collisions/RegColl.cpp b/v_rep/sourceCode/collisions/RegColl.cpp
+index e79709a..25377a7 100644
+--- a/v_rep/sourceCode/collisions/RegColl.cpp
++++ b/v_rep/sourceCode/collisions/RegColl.cpp
+@@ -39,6 +39,7 @@
+ #include "v_repStrings.h"
+ #include "VDateTime.h"
+ #include "collDistInterface.h"
++#include "sensingThreadPool.h"
+ 
+ 
+ CRegColl::CRegColl(int obj1ID,int obj2ID,std::string objName,int objID)
+diff --git a/v_rep/sourceCode/distances/RegDist.cpp b/v_rep/sourceCode/distances/RegDist.cpp
+index 8ac4f21..d803cdd 100644
+--- a/v_rep/sourceCode/distances/RegDist.cpp
++++ b/v_rep/sourceCode/distances/RegDist.cpp
+@@ -40,6 +40,7 @@
+ #include "v_repStrings.h"
+ #include "VDateTime.h"
+ #include "collDistInterface.h"
++#include "sensingThreadPool.h"
+ 
+ 
+ CRegDist::CRegDist(int obj1ID,int obj2ID,std::string objName,int objID)
+diff --git a/v_rep/sourceCode/scintillaRelated/ScintillaDlg.cpp b/v_rep/sourceCode/scintillaRelated/ScintillaDlg.cpp
+index 9c35b51..33d405f 100644
+--- a/v_rep/sourceCode/scintillaRelated/ScintillaDlg.cpp
++++ b/v_rep/sourceCode/scintillaRelated/ScintillaDlg.cpp
+@@ -36,9 +36,9 @@
+ #include "IloIlo.h"
+ #include "Ct.h"
+ #include <algorithm> 
+-#include <SciLexer.h>
+ #include <QCloseEvent>
+ #include <QVBoxLayout>
++#include <Qsci/qscilexerlua.h>
+ 
+ std::vector<char> CScintillaDlg::vrepKeywords1;
+ std::vector<char> CScintillaDlg::vrepKeywords2;
+@@ -135,20 +135,20 @@ void CScintillaDlg::setColorsAndMainStyles(int backgroundStyle)
+ 
+ 	static SScintillaColors syntaxColors[]= 
+ 	{
+-		{SCE_LUA_COMMENT,green},
+-		{SCE_LUA_COMMENTLINE,green},
+-		{SCE_LUA_COMMENTDOC,green},
+-		{SCE_LUA_NUMBER,magenta},
+-		{SCE_LUA_STRING,yellow},
+-		{SCE_LUA_LITERALSTRING,yellow},
+-		{SCE_LUA_CHARACTER,yellow},
+-		{SCE_LUA_OPERATOR,black},
+-		{SCE_LUA_PREPROCESSOR,cyan},
+-		{SCE_LUA_WORD,blue},
+-		{SCE_LUA_WORD2,red},
+-		{SCE_LUA_WORD3,red2},
+-		{SCE_LUA_WORD4,red3},
+-		{SCE_LUA_IDENTIFIER,mediumGrey},
++		{QsciLexerLua::Comment, green},
++		{QsciLexerLua::LineComment,green},
++		{3,green}, // QsciLexerLua::DocComment does not exists but 3 is an equivalent
++		{QsciLexerLua::Number,magenta},
++		{QsciLexerLua::String,yellow},
++		{QsciLexerLua::LiteralString,yellow},
++		{QsciLexerLua::Character,yellow},
++		{QsciLexerLua::Operator,black},
++		{QsciLexerLua::Preprocessor,cyan},
++		{QsciLexerLua::Keyword,blue},
++		{QsciLexerLua::BasicFunctions,red},
++		{QsciLexerLua::StringTableMathsFunctions,red2},
++		{QsciLexerLua::CoroutinesIOSystemFacilities,red3},
++		{QsciLexerLua::Identifier,mediumGrey},
+ 		{-1,0}
+ 	};
+ 
+diff --git a/v_rep/sourceCode/scintillaRelated/ScintillaModalDlg.cpp b/v_rep/sourceCode/scintillaRelated/ScintillaModalDlg.cpp
+index 3ee6078..dec9a04 100644
+--- a/v_rep/sourceCode/scintillaRelated/ScintillaModalDlg.cpp
++++ b/v_rep/sourceCode/scintillaRelated/ScintillaModalDlg.cpp
+@@ -38,9 +38,9 @@
+ #include <algorithm> 
+ #include "VMessageBox.h"
+ #include "v_repStringTable.h"
+-#include <SciLexer.h>
+ #include <QCloseEvent>
+ #include <QVBoxLayout>
++#include <Qsci/qscilexerlua.h>
+ 
+ std::vector<char> CScintillaModalDlg::vrepKeywords1;
+ std::vector<char> CScintillaModalDlg::vrepKeywords2;
+@@ -150,20 +150,20 @@ void CScintillaModalDlg::_setColorsAndMainStyles()
+ 
+ 	static SScintillaColors syntaxColors[]= 
+ 	{
+-		{SCE_LUA_COMMENT,green},
+-		{SCE_LUA_COMMENTLINE,green},
+-		{SCE_LUA_COMMENTDOC,green},
+-		{SCE_LUA_NUMBER,magenta},
+-		{SCE_LUA_STRING,yellow},
+-		{SCE_LUA_LITERALSTRING,yellow},
+-		{SCE_LUA_CHARACTER,yellow},
+-		{SCE_LUA_OPERATOR,black},
+-		{SCE_LUA_PREPROCESSOR,cyan},
+-		{SCE_LUA_WORD,blue},
+-		{SCE_LUA_WORD2,red},
+-		{SCE_LUA_WORD3,red2},
+-		{SCE_LUA_WORD4,red3},
+-		{SCE_LUA_IDENTIFIER,mediumGrey},
++		{QsciLexerLua::Comment, green},
++		{QsciLexerLua::LineComment,green},
++		{3,green}, // QsciLexerLua::DocComment does not exists but 3 is an equivalent
++		{QsciLexerLua::Number,magenta},
++		{QsciLexerLua::String,yellow},
++		{QsciLexerLua::LiteralString,yellow},
++		{QsciLexerLua::Character,yellow},
++		{QsciLexerLua::Operator,black},
++		{QsciLexerLua::Preprocessor,cyan},
++		{QsciLexerLua::Keyword,blue},
++		{QsciLexerLua::BasicFunctions,red},
++		{QsciLexerLua::StringTableMathsFunctions,red2},
++		{QsciLexerLua::CoroutinesIOSystemFacilities,red3},
++		{QsciLexerLua::Identifier,mediumGrey},
+ 		{-1,0}
+ 	};
+ 
+-- 
+1.8.1.5
+
