@@ -18,7 +18,7 @@ path? ( ${HOMEPAGE}/V-REP_PATH_PLUGIN_SOURCE_V3_0_3.zip )
 
 SLOT=0
 KEYWORDS="amd64 x86"
-IUSE="dynamic mesh path"
+IUSE="dynamic mesh path doc"
 LICENSE="GPL-3 LGPL-2.1 LGPL-3 V-REP_PRO_EDU V-REP_PLUGIN"
 
 RDEPEND="
@@ -125,4 +125,11 @@ src_install() {
 	cd ${WORKDIR}/build
 	dolib.so lib*.so*
 	dobin vrep
+	if use doc; then
+		dohtml -r "${S}/helpFiles/*"
+	fi
+	insinto "/usr/share/${PN}"
+	doins -r "${S}/scenes"
+	doins -r "${S}/cadFiles"
+	doins -r "${S}/models"
 }
