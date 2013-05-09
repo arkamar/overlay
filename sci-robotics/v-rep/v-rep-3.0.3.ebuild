@@ -65,6 +65,9 @@ src_prepare() {
 	## deleted because of failure:
 	#  vrep: symbol lookup error: /usr/lib/libv_repExtUrdf.so: undefined symbol:
 	#  _ZN11CUrdfDialogC1EP7QWidget
+	ewarn "v_repExtUrdf_Makefile was removed doe to this error:"
+	ewarn "vrep: symbol lookup error: /usr/lib/libv_repExtUrdf.so: undefined symbol:"
+	ewarn "_ZN11CUrdfDialogC1EP7QWidget"
 	rm v_repExtUrdf_Makefile
 }
 
