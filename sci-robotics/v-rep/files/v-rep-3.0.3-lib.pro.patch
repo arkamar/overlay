@@ -1,14 +1,14 @@
-From c5ed7a14804c2e402ff21e4ec97240b041f038c4 Mon Sep 17 00:00:00 2001
+From b4c71f04a17c0096f08e1c2cefa0814b5086eb99 Mon Sep 17 00:00:00 2001
 From: =?UTF-8?q?Petr=20Van=C4=9Bk?= <vanekpe5@fel.cvut.cz>
-Date: Wed, 8 May 2013 23:09:13 +0200
-Subject: [PATCH 1/3] libraries
+Date: Thu, 9 May 2013 09:55:13 +0200
+Subject: [PATCH] Corection
 
 ---
- v_rep/v_rep.pro | 34 ++++------------------------------
- 1 file changed, 4 insertions(+), 30 deletions(-)
+ v_rep/v_rep.pro | 44 +++++++++-----------------------------------
+ 1 file changed, 9 insertions(+), 35 deletions(-)
 
 diff --git a/v_rep/v_rep.pro b/v_rep/v_rep.pro
-index b96c29e..1cf5a36 100644
+index b96c29e..c47d574 100644
 --- a/v_rep/v_rep.pro
 +++ b/v_rep/v_rep.pro
 @@ -45,41 +45,15 @@ RESOURCES += variousImageFiles.qrc
@@ -40,10 +40,11 @@ index b96c29e..1cf5a36 100644
 -	INCLUDEPATH += **your boost folder**
 -	INCLUDEPATH += **your QScintilla "Qt4" folder**
 -	INCLUDEPATH += **your QScintilla "include" folder**
+-	LIBS += **your "libqscintilla2.so" location**
 +	INCLUDEPATH += /usr/include/boost/
 +	INCLUDEPATH += /usr/include/qt4/
 +	INCLUDEPATH += /usr/include/qt4/Qsci/
- 	LIBS += **your "libqscintilla2.so" location**
++	LIBS += -L/usr/lib/qt4/ -lqscintilla2
  	contains(QMAKE_HOST.arch, x86_64):{ # 64 Bit
 -		INCLUDEPATH += **your lua5.1 64"include" folder**
 -		LIBS += -Llua5_1_4_Linux26g4_64_lib/ -llua5.1
@@ -57,24 +58,7 @@ index b96c29e..1cf5a36 100644
  	DEFINES += LIN_VREP
  }
  
--- 
-1.8.1.5
-
-
-From d6e9fddaea9e1b564350c635638d484b277ade6c Mon Sep 17 00:00:00 2001
-From: =?UTF-8?q?Petr=20Van=C4=9Bk?= <vanekpe5@fel.cvut.cz>
-Date: Wed, 8 May 2013 23:16:49 +0200
-Subject: [PATCH 2/3] repired path
-
----
- v_rep/v_rep.pro | 8 ++++----
- 1 file changed, 4 insertions(+), 4 deletions(-)
-
-diff --git a/v_rep/v_rep.pro b/v_rep/v_rep.pro
-index 1cf5a36..d9be9dc 100644
---- a/v_rep/v_rep.pro
-+++ b/v_rep/v_rep.pro
-@@ -534,7 +534,7 @@ HEADERS += sourceCode/textures/TextureObject.h \
+@@ -560,7 +534,7 @@ HEADERS += sourceCode/textures/TextureObject.h \
  	sourceCode/textures/TextureProperty.h \
  
  HEADERS += sourceCode/communication/serialPort/SerialPort.h \
@@ -83,7 +67,7 @@ index 1cf5a36..d9be9dc 100644
  
  HEADERS += sourceCode/serialization/Ser.h \
  	sourceCode/serialization/extIkSer.h \
-@@ -569,7 +569,7 @@ HEADERS += sourceCode/menusAndSimilar/ToolBarCommand.h \
+@@ -595,7 +569,7 @@ HEADERS += sourceCode/menusAndSimilar/ToolBarCommand.h \
  
  HEADERS += sourceCode/geometricAlgorithms/LinMotionRoutines.h \
  	sourceCode/geometricAlgorithms/EdgeCont.h \
@@ -92,7 +76,7 @@ index 1cf5a36..d9be9dc 100644
  	sourceCode/geometricAlgorithms/MeshManip.h \
  	sourceCode/geometricAlgorithms/EdgeElement.h \
  	sourceCode/geometricAlgorithms/algos.h \
-@@ -598,7 +598,7 @@ HEADERS += sourceCode/geometricAlgorithms/qHull/user.h \
+@@ -624,7 +598,7 @@ HEADERS += sourceCode/geometricAlgorithms/qHull/user.h \
  	sourceCode/geometricAlgorithms/qHull/io.h \
  	sourceCode/geometricAlgorithms/qHull/geom.h \
  
@@ -101,7 +85,7 @@ index 1cf5a36..d9be9dc 100644
  	sourceCode/various/GV.H \
  	sourceCode/various/Global.h \
  	sourceCode/various/embeddedFonts.h \
-@@ -611,7 +611,7 @@ HEADERS += sourceCode/various/vrepConfig \
+@@ -637,7 +611,7 @@ HEADERS += sourceCode/various/vrepConfig \
  	sourceCode/various/DirectoryPaths.h \
  	sourceCode/various/ConstraintSolverObject.h \
  
@@ -110,32 +94,6 @@ index 1cf5a36..d9be9dc 100644
  	sourceCode/libsAndPlugins/auxLib.h \
  	sourceCode/libsAndPlugins/auxLibVideo.h \
  
--- 
-1.8.1.5
-
-
-From 42c62da4ca902cfc6f0e9ebebcbe32d64aec2e7f Mon Sep 17 00:00:00 2001
-From: =?UTF-8?q?Petr=20Van=C4=9Bk?= <vanekpe5@fel.cvut.cz>
-Date: Wed, 8 May 2013 23:44:44 +0200
-Subject: [PATCH 3/3] Added qsci lib
-
----
- v_rep/v_rep.pro | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
-
-diff --git a/v_rep/v_rep.pro b/v_rep/v_rep.pro
-index d9be9dc..c47d574 100644
---- a/v_rep/v_rep.pro
-+++ b/v_rep/v_rep.pro
-@@ -49,7 +49,7 @@ unix:!macx {
- 	INCLUDEPATH += /usr/include/boost/
- 	INCLUDEPATH += /usr/include/qt4/
- 	INCLUDEPATH += /usr/include/qt4/Qsci/
--	LIBS += **your "libqscintilla2.so" location**
-+	LIBS += -L/usr/lib/qt4/ -lqscintilla2
- 	contains(QMAKE_HOST.arch, x86_64):{ # 64 Bit
- 		DEFINES += QT_VREP_64BIT
- 	}
 -- 
 1.8.1.5
 

@@ -1,0 +1,30 @@
+diff --git a/programming/v_repExtUrdf/urdfdialog.h b/programming/v_repExtUrdf/urdfdialog.h
+index 7bba62a..9fb1b45 100755
+--- a/programming/v_repExtUrdf/urdfdialog.h
++++ b/programming/v_repExtUrdf/urdfdialog.h
+@@ -31,7 +31,7 @@
+ #ifndef URDFDIALOG_H
+ #define URDFDIALOG_H
+ 
+-#include <QDialog>
++#include <QtGui/QDialog>
+ 
+ namespace Ui {
+     class CUrdfDialog;
+diff --git a/programming/v_repExtUrdf_Makefile b/programming/v_repExtUrdf_Makefile
+index 7c15192..39b67e4 100755
+--- a/programming/v_repExtUrdf_Makefile
++++ b/programming/v_repExtUrdf_Makefile
+@@ -1,4 +1,4 @@
+-CFLAGS = -I./include -I./v_repExtUrdf -I./v_repMath -Wall -fPIC -static
++CFLAGS = -I/usr/include/qt4 -I./include -I./v_repExtUrdf -I./v_repMath -Wall -fPIC -static
+ 
+ OS = $(shell uname -s)
+ ifeq ($(OS), Linux)
+@@ -19,4 +19,4 @@ all:
+ 	g++ $(CFLAGS) -c v_repMath/7Vector.cpp -o v_repMath/7Vector.o
+ 	g++ $(CFLAGS) -c v_repMath/MyMath.cpp -o v_repMath/MyMath.o
+ 	g++ $(CFLAGS) -c common/v_repLib.cpp -o common/v_repLib.o
+-	g++ v_repExtUrdf/v_repExtUrdf.o v_repExtUrdf/tinyxml2.o v_repMath/3Vector.o v_repMath/3X3Matrix.o v_repMath/4Vector.o v_repMath/4X4Matrix.o v_repMath/7Vector.o v_repMath/MyMath.o common/v_repLib.o -o libv_repExtUrdf.$(EXT) -lpthread -ldl -shared 
+\ No newline at end of file
++	g++ v_repExtUrdf/v_repExtUrdf.o v_repExtUrdf/tinyxml2.o v_repMath/3Vector.o v_repMath/3X3Matrix.o v_repMath/4Vector.o v_repMath/4X4Matrix.o v_repMath/7Vector.o v_repMath/MyMath.o common/v_repLib.o -o libv_repExtUrdf.$(EXT) -lpthread -ldl -shared 
