@@ -1,0 +1,205 @@
+diff --git a/dynamicsPlugin/sourceCode/v_repExtDynamics.cpp b/dynamicsPlugin/sourceCode/v_repExtDynamics.cpp
+index 05b6bb6..bc50bc2 100644
+--- a/dynamicsPlugin/sourceCode/v_repExtDynamics.cpp
++++ b/dynamicsPlugin/sourceCode/v_repExtDynamics.cpp
+@@ -66,7 +66,7 @@ VREP_DLLEXPORT unsigned char v_repStart(void* reservedPointer,int reservedInt)
+  #endif
+ 	 std::string currentDirAndPath(curDirAndFile);
+ 	 // 2. Append the V-REP library's name:
+-	 std::string temp(currentDirAndPath);
++	 std::string temp("/usr/lib");
+  #ifdef _WIN32
+ 	 temp+="/v_rep.dll";
+  #elif defined (__linux)
+diff --git a/meshCalculationPlugin/sourceCode/v_repExtMeshCalc.cpp b/meshCalculationPlugin/sourceCode/v_repExtMeshCalc.cpp
+index db1a724..76bec1f 100644
+--- a/meshCalculationPlugin/sourceCode/v_repExtMeshCalc.cpp
++++ b/meshCalculationPlugin/sourceCode/v_repExtMeshCalc.cpp
+@@ -66,7 +66,7 @@ VREP_DLLEXPORT unsigned char v_repStart(void* reservedPointer,int reservedInt)
+  #endif
+ 	 std::string currentDirAndPath(curDirAndFile);
+ 	 // 2. Append the V-REP library's name:
+-	 std::string temp(currentDirAndPath);
++	 std::string temp("/usr/lib");
+  #ifdef _WIN32
+ 	 temp+="/v_rep.dll";
+  #elif defined (__linux)
+diff --git a/pathPlanningPlugin/sourceCode/v_repExtPathPlanning.cpp b/pathPlanningPlugin/sourceCode/v_repExtPathPlanning.cpp
+index 4c02553..d5c8fae 100644
+--- a/pathPlanningPlugin/sourceCode/v_repExtPathPlanning.cpp
++++ b/pathPlanningPlugin/sourceCode/v_repExtPathPlanning.cpp
+@@ -66,7 +66,7 @@ VREP_DLLEXPORT unsigned char v_repStart(void* reservedPointer,int reservedInt)
+  #endif
+ 	 std::string currentDirAndPath(curDirAndFile);
+ 	 // 2. Append the V-REP library's name:
+-	 std::string temp(currentDirAndPath);
++	 std::string temp("/usr/lib");
+  #ifdef _WIN32
+ 	 temp+="/v_rep.dll";
+  #elif defined (__linux)
+diff --git a/programming/v_repClientApplication/main.cpp b/programming/v_repClientApplication/main.cpp
+index db5019e..1d438e9 100755
+--- a/programming/v_repClientApplication/main.cpp
++++ b/programming/v_repClientApplication/main.cpp
+@@ -62,7 +62,7 @@ void simulatorInit()
+ 	std::cout << "Simulator launched.\n";
+ 
+ 	QFileInfo pathInfo(QCoreApplication::applicationFilePath());
+-	std::string pa=pathInfo.path().toStdString();
++	std::string pa="/usr/lib"; //pathInfo.path().toStdString();
+ 	QDir dir(pa.c_str());
+ 	dir.setFilter(QDir::Files|QDir::Hidden); // |QDir::NoSymLinks); // removed on 11/4/2013 thanks to Karl Robillard
+ 	dir.setSorting(QDir::Name);
+diff --git a/programming/v_repExtBubbleRob/v_repExtBubbleRob.cpp b/programming/v_repExtBubbleRob/v_repExtBubbleRob.cpp
+index e468477..7e7cbec 100755
+--- a/programming/v_repExtBubbleRob/v_repExtBubbleRob.cpp
++++ b/programming/v_repExtBubbleRob/v_repExtBubbleRob.cpp
+@@ -143,7 +143,7 @@ VREP_DLLEXPORT unsigned char v_repStart(void* reservedPointer,int reservedInt)
+ #endif
+ 
+ 	std::string currentDirAndPath(curDirAndFile);
+-	std::string temp(currentDirAndPath);
++	std::string temp("/usr/lib");
+ 
+ #ifdef _WIN32
+ 	temp+="\\v_rep.dll";
+diff --git a/programming/v_repExtCollada/v_repExtCollada.cpp b/programming/v_repExtCollada/v_repExtCollada.cpp
+index 3718e17..d4996c3 100755
+--- a/programming/v_repExtCollada/v_repExtCollada.cpp
++++ b/programming/v_repExtCollada/v_repExtCollada.cpp
+@@ -57,7 +57,7 @@ VREP_DLLEXPORT unsigned char v_repStart(void* reservedPointer,int reservedInt)
+  #endif
+ 	 std::string currentDirAndPath(curDirAndFile);
+ 	 // 2. Append the V-REP library's name:
+-	 std::string temp(currentDirAndPath);
++	 std::string temp("/usr/lib");
+  #ifdef _WIN32
+ 	 temp+="/v_rep.dll";
+  #elif defined (__linux)
+diff --git a/programming/v_repExtK3/v_repExtK3.cpp b/programming/v_repExtK3/v_repExtK3.cpp
+index a1ffd18..ae1c95b 100755
+--- a/programming/v_repExtK3/v_repExtK3.cpp
++++ b/programming/v_repExtK3/v_repExtK3.cpp
+@@ -375,7 +375,7 @@ VREP_DLLEXPORT unsigned char v_repStart(void* reservedPointer,int reservedInt)
+ #endif
+ 
+ 	std::string currentDirAndPath(curDirAndFile);
+-	std::string temp(currentDirAndPath);
++	std::string temp("/usr/lib");
+ 
+ #ifdef _WIN32
+ 	temp+="\\v_rep.dll";
+diff --git a/programming/v_repExtMtb/v_repExtMtb.cpp b/programming/v_repExtMtb/v_repExtMtb.cpp
+index 8557d3c..0ca2ca5 100755
+--- a/programming/v_repExtMtb/v_repExtMtb.cpp
++++ b/programming/v_repExtMtb/v_repExtMtb.cpp
+@@ -439,7 +439,7 @@ VREP_DLLEXPORT unsigned char v_repStart(void* reservedPointer,int reservedInt)
+ 	 std::string currentDirAndPath(curDirAndFile);
+ 	 CAccess::currentDirAndPath=currentDirAndPath;
+ 	 // 2. Append the V-REP library's name:
+-	 std::string temp(currentDirAndPath);
++	 std::string temp("/usr/lib");
+  #ifdef _WIN32
+ 	 temp+="/v_rep.dll";
+  #elif defined (__linux)
+diff --git a/programming/v_repExtPluginSkeleton/v_repExtPluginSkeleton.cpp b/programming/v_repExtPluginSkeleton/v_repExtPluginSkeleton.cpp
+index 761edd5..f561662 100755
+--- a/programming/v_repExtPluginSkeleton/v_repExtPluginSkeleton.cpp
++++ b/programming/v_repExtPluginSkeleton/v_repExtPluginSkeleton.cpp
+@@ -45,7 +45,7 @@ VREP_DLLEXPORT unsigned char v_repStart(void* reservedPointer,int reservedInt)
+ #endif
+ 	std::string currentDirAndPath(curDirAndFile);
+ 	// 2. Append the V-REP library's name:
+-	std::string temp(currentDirAndPath);
++	std::string temp("/usr/lib");
+ #ifdef _WIN32
+ 	temp+="\\v_rep.dll";
+ #elif defined (__linux)
+diff --git a/programming/v_repExtRemoteApi/v_repExtRemoteApi.cpp b/programming/v_repExtRemoteApi/v_repExtRemoteApi.cpp
+index 5cbb684..f1de330 100755
+--- a/programming/v_repExtRemoteApi/v_repExtRemoteApi.cpp
++++ b/programming/v_repExtRemoteApi/v_repExtRemoteApi.cpp
+@@ -213,7 +213,7 @@ VREP_DLLEXPORT unsigned char v_repStart(void* reservedPointer,int reservedInt)
+ #endif
+ 
+ 	std::string currentDirAndPath(curDirAndFile);
+-	std::string temp(currentDirAndPath);
++	std::string temp("/usr/lib");
+ 
+ #ifdef _WIN32
+ 	temp+="\\v_rep.dll";
+diff --git a/programming/v_repExtSimpleFilter/v_repExtSimpleFilter.cpp b/programming/v_repExtSimpleFilter/v_repExtSimpleFilter.cpp
+index 1440a11..c6e51cc 100755
+--- a/programming/v_repExtSimpleFilter/v_repExtSimpleFilter.cpp
++++ b/programming/v_repExtSimpleFilter/v_repExtSimpleFilter.cpp
+@@ -49,7 +49,7 @@ VREP_DLLEXPORT unsigned char v_repStart(void* reservedPointer,int reservedInt)
+  #endif
+ 	 std::string currentDirAndPath(curDirAndFile);
+ 	 // 2. Append the V-REP library's name:
+-	 std::string temp(currentDirAndPath);
++	 std::string temp("/usr/lib");
+  #ifdef _WIN32
+ 	 temp+="/v_rep.dll";
+  #elif defined (__linux)
+diff --git a/programming/v_repExtUrdf/v_repExtUrdf.cpp b/programming/v_repExtUrdf/v_repExtUrdf.cpp
+index 677d304..6840e3e 100755
+--- a/programming/v_repExtUrdf/v_repExtUrdf.cpp
++++ b/programming/v_repExtUrdf/v_repExtUrdf.cpp
+@@ -66,7 +66,7 @@ VREP_DLLEXPORT unsigned char v_repStart(void* reservedPointer,int reservedInt)
+  #endif
+ 	 std::string currentDirAndPath(curDirAndFile);
+ 	 // 2. Append the V-REP library's name:
+-	 std::string temp(currentDirAndPath);
++	 std::string temp("/usr/lib");
+  #ifdef _WIN32
+ 	 temp+="/v_rep.dll";
+  #elif defined (__linux)
+diff --git a/programming/v_repExtUrdf_Makefile b/programming/v_repExtUrdf_Makefile
+index 39b67e4..bba6eb2 100755
+--- a/programming/v_repExtUrdf_Makefile
++++ b/programming/v_repExtUrdf_Makefile
+@@ -19,4 +19,4 @@ all:
+ 	g++ $(CFLAGS) -c v_repMath/7Vector.cpp -o v_repMath/7Vector.o
+ 	g++ $(CFLAGS) -c v_repMath/MyMath.cpp -o v_repMath/MyMath.o
+ 	g++ $(CFLAGS) -c common/v_repLib.cpp -o common/v_repLib.o
+-	g++ v_repExtUrdf/v_repExtUrdf.o v_repExtUrdf/tinyxml2.o v_repMath/3Vector.o v_repMath/3X3Matrix.o v_repMath/4Vector.o v_repMath/4X4Matrix.o v_repMath/7Vector.o v_repMath/MyMath.o common/v_repLib.o -o libv_repExtUrdf.$(EXT) -lpthread -ldl -shared 
++	g++ v_repExtUrdf/v_repExtUrdf.o v_repExtUrdf/tinyxml2.o v_repMath/3Vector.o v_repMath/3X3Matrix.o v_repMath/4Vector.o v_repMath/4X4Matrix.o v_repMath/7Vector.o v_repMath/MyMath.o common/v_repLib.o -o libv_repExtUrdf.$(EXT) -lpthread -ldl -shared -L/usr/lib/qt4 -lQtGui -lQtCore
+diff --git a/programming/windowsOnlyProjects/v_repExtCam/v_repExtCam.cpp b/programming/windowsOnlyProjects/v_repExtCam/v_repExtCam.cpp
+index b16f47e..7e64563 100755
+--- a/programming/windowsOnlyProjects/v_repExtCam/v_repExtCam.cpp
++++ b/programming/windowsOnlyProjects/v_repExtCam/v_repExtCam.cpp
+@@ -374,7 +374,7 @@ VREP_DLLEXPORT unsigned char v_repStart(void* reservedPointer,int reservedInt)
+ 	GetModuleFileName(NULL,curDirAndFile,1023);
+ 	PathRemoveFileSpec(curDirAndFile);
+ 	std::string currentDirAndPath(curDirAndFile);
+-	std::string temp(currentDirAndPath);
++	std::string temp("/usr/lib");
+ 	temp+="\\v_rep.dll";
+ 	vrepLib=loadVrepLibrary(temp.c_str());
+ 	if (vrepLib==NULL)
+diff --git a/programming/windowsOnlyProjects/v_repExtJoystick/v_repExtJoystick.cpp b/programming/windowsOnlyProjects/v_repExtJoystick/v_repExtJoystick.cpp
+index bab3aa0..0537fa9 100755
+--- a/programming/windowsOnlyProjects/v_repExtJoystick/v_repExtJoystick.cpp
++++ b/programming/windowsOnlyProjects/v_repExtJoystick/v_repExtJoystick.cpp
+@@ -319,7 +319,7 @@ VREP_DLLEXPORT unsigned char v_repStart(void* reservedPointer,int reservedInt)
+ 	GetModuleFileName(NULL,curDirAndFile,1023);
+ 	PathRemoveFileSpec(curDirAndFile);
+ 	std::string currentDirAndPath(curDirAndFile);
+-	std::string temp(currentDirAndPath);
++	std::string temp("/usr/lib");
+ 	temp+="\\v_rep.dll";
+ 	vrepLib=loadVrepLibrary(temp.c_str());
+ 	if (vrepLib==NULL)
+diff --git a/programming/windowsOnlyProjects/v_repExtWii/v_repExtWii.cpp b/programming/windowsOnlyProjects/v_repExtWii/v_repExtWii.cpp
+index acaf3ff..cd5a1a1 100755
+--- a/programming/windowsOnlyProjects/v_repExtWii/v_repExtWii.cpp
++++ b/programming/windowsOnlyProjects/v_repExtWii/v_repExtWii.cpp
+@@ -430,7 +430,7 @@ VREP_DLLEXPORT unsigned char v_repStart(void* reservedPointer,int reservedInt)
+ 	GetModuleFileName(NULL,curDirAndFile,1023);
+ 	PathRemoveFileSpec(curDirAndFile);
+ 	std::string currentDirAndPath(curDirAndFile);
+-	std::string temp(currentDirAndPath);
++	std::string temp("/usr/lib");
+ 	temp+="\\v_rep.dll";
+ 	vrepLib=loadVrepLibrary(temp.c_str());
+ 	if (vrepLib==NULL)
