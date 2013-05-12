@@ -18,6 +18,7 @@ FEATURES="noclean keepwork"
 RDEPEND="
 	dev-libs/boost
 	dev-lang/lua
+	dev-games/ode
 	x11-libs/qscintilla
 	dev-qt/qtopengl
 "
@@ -115,7 +116,8 @@ src_install() {
 		dohtml -r "${MY_S}/helpFiles/*"
 	fi
 	insinto "/usr/share/${PN}"
-	doins -r "${MY_S}/scenes"
 	doins -r "${MY_S}/cadFiles"
 	doins -r "${MY_S}/models"
+	doins -r "${MY_S}/scenes"
+	doins -r "${MY_S}/system"
 }

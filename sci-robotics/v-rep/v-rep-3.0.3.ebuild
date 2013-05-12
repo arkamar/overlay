@@ -24,6 +24,7 @@ LICENSE="GPL-3 LGPL-2.1 LGPL-3 V-REP_PRO_EDU V-REP_PLUGIN"
 RDEPEND="
 	dev-libs/boost
 	dev-lang/lua
+	dev-games/ode
 	x11-libs/qscintilla
 	dev-qt/qtopengl
 "
