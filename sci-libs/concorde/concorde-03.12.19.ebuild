@@ -12,10 +12,12 @@ SRC_URI="http://www.math.uwaterloo.ca/tsp/concorde/downloads/codes/src/co${MY_PV
 LICENSE=""
 SLOT="0"
 KEYWORDS="amd64 x86"
-IUSE=""
+IUSE="randtsp"
 
-DEPEND=""
-RDEPEND="${DEPEND}"
+RDEPEND="
+	randtsp? ( virtual/awk )
+"
+DEPEND="${RDEPEND}"
 
 src_unpack() {
 	unpack "${A}"
@@ -31,7 +33,10 @@ src_install() {
 	dobin FMATCH/fmatch
 	dobin LINKERN/linkern
 	dobin LOCALCUT/localcut
-	dobin TINY/randtsp.awk
+	use randtsp && {
+		sed -i 's/nawk/awk/' TINY/randtsp.awk
+		dobin TINY/randtsp.awk
+	}
 	dobin TOOLS/{edg2len,edgunion,fconvert,prob2tsp,showres,tourchk,tourlen}
 	dobin TSP/concorde
 }
