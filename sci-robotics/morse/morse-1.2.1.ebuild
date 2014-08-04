@@ -4,6 +4,8 @@
 
 EAPI=5
 
+inherit cmake-utils
+
 DESCRIPTION="The Modular OpenRobots Simulation Engine"
 HOMEPAGE="http://www.openrobots.org/wiki/morse"
 SRC_URI="ftp://ftp.openrobots.org/pub/openrobots/morse/${P}.tar.bz2"
