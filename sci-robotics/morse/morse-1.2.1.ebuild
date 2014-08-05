@@ -13,7 +13,7 @@ SRC_URI="ftp://ftp.openrobots.org/pub/openrobots/morse/${P}.tar.bz2"
 LICENSE="BSD OFL-1.1 CC-BY-SA-3.0"
 SLOT="0"
 KEYWORDS="~x86 ~amd64"
-IUSE="doc pocolibs moos ros" # yarp
+IUSE="doc pocolibs moos ros python" # yarp
 
 DEPEND="
 	>=media-gfx/blender-2.62
@@ -28,6 +28,7 @@ src_configure() {
 		$(cmake-utils_use_build moos MOOS_SUPPORT)
 		$(cmake-utils_use_build doc DOC_SUPPORT)
 		$(cmake-utils_use_build pocolibs POCOLIBS_SUPPORT)
+		$(cmake-utils_use python PYMORSE_SUPPORT)
 	)
 	cmake-utils_src_configure
 }
