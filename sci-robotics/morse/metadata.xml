@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+<maintainer>
+	<email>vanekpe5@fel.cvut.cz</email>
+	<name>Petr Vaněk</name>
+</maintainer>
+<use>
+	<flag name="pocolibs">Adds support of pocolibs in morse</flag>
+	<flag name="yarp">Adds support of yarp2 in morse</flag>
+	<flag name="ros">Adds support of ros in morse</flag>
+</use>
+<longdescription lang="en">
+</longdescription>
+</pkgmetadata>
+
