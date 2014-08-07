@@ -28,15 +28,11 @@ src_unpack() {
 src_install() {
 	dolib.a concorde.a
 	doheader concorde.h
-	dobin EDGEGEN/edgegen
-	dobin CUT/mincut
-	dobin FMATCH/fmatch
-	dobin LINKERN/linkern
-	dobin LOCALCUT/localcut
+	dobin EDGEGEN/edgegen CUT/mincut FMATCH/fmatch LINKERN/linkern LOCALCUT/localcut\
+		TOOLS/{edg2len,edgunion,fconvert,prob2tsp,showres,tourchk,tourlen} TSP/concorde
+
 	use randtsp && {
 		sed -i 's/nawk/awk/' TINY/randtsp.awk
 		dobin TINY/randtsp.awk
 	}
-	dobin TOOLS/{edg2len,edgunion,fconvert,prob2tsp,showres,tourchk,tourlen}
-	dobin TSP/concorde
 }
