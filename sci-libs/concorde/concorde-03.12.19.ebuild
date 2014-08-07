@@ -19,11 +19,7 @@ RDEPEND="
 "
 DEPEND="${RDEPEND}"
 
-src_unpack() {
-	unpack "${A}"
-	cd ${WORKDIR}
-	mv concorde "${P}"
-}
+S="${WORKDIR}/${PN}"
 
 src_install() {
 	dolib.a concorde.a
