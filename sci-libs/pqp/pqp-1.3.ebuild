@@ -23,16 +23,16 @@ src_prepare() {
 		-e "1d"\
 		-e "2aCC=${CXX}"\
 		-e "/CFLAGS/s/=.*/= ${CFLAGS} -fPIC/"\
-		Makefile
+		Makefile || die
 }
 
 src_install() {
 	use static-libs && {
-		dolib.a lib/libPQP.a
+		dolib.a lib/libPQP.a || die
 	}
-	ln -sf libPQP.so.${PV} libPQP.so.1
-	ln -sf libPQP.so.${PV} libPQP.so
-	dolib.so libPQP.so*
+	ln -sf libPQP.so.${PV} libPQP.so.1 || die
+	ln -sf libPQP.so.${PV} libPQP.so || die
+	dolib.so libPQP.so* || die
 	insinto "/usr/include/PQP"
 	doins include/*.h || die
 }
