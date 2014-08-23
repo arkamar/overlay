@@ -8,7 +8,7 @@ inherit cmake-utils
 
 DESCRIPTION="Simulation Description Format (SDF) parser"
 HOMEPAGE="https://bitbucket.org/osrf/sdformat"
-SRC_URI="http://osrf-distributions.s3.amazonaws.com/sdformat/releases/${P}.tar.bz2"
+SRC_URI="http://osrf-distributions.s3.amazonaws.com/sdformat/releases/${PN}-prerelease-${PV}.tar.bz2"
 
 LICENSE="Apache-2.0"
 SLOT="0"
