@@ -15,3 +15,7 @@ It contains packages supporting mainly robotic research.
 ##Robotic Simulator
 
 - **Morse** http://www.openrobots.org/wiki/morse/
+
+##Libraries
+
+- **SDFormat** - Simulation Description Format (SDF) parser https://bitbucket.org/osrf/sdformat
