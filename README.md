@@ -15,6 +15,7 @@ It contains packages supporting mainly robotic research.
 ##Robotic Simulator
 
 - **Morse** http://www.openrobots.org/wiki/morse/
+- **Gazebo** http://gazebosim.org/
 
 ##Libraries
 
