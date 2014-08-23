@@ -33,7 +33,9 @@ RDEPEND="${DEPEND}"
 src_prepare() {
 	sed -i '/CheckDRIDisplay/d' CMakeLists.txt
 	sed -i '38a#include <stdint.h>' gazebo/rendering/skyx/include/Prerequisites.h
-	sed -i '/gdal/s:gdal/::' gazebo/common/Dem{.cc,Private.hh,.hh}
+	sed -i '22a#include <stdint.h>' gazebo/util/system.hh
+	sed -i '/gdal/s:gdal/::' gazebo/common/Dem{.cc,Private.hh,.hh}\
+		gazebo/physics/HeightmapShape.cc
 }
 
 src_configure() {
