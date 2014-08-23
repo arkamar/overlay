@@ -19,6 +19,7 @@ DEPEND="
 	dev-ruby/ruby-termios
 	sci-libs/ann
 	sci-libs/rapid
+	sci-libs/pqp
 "
 RDEPEND="${DEPEND}"
 
