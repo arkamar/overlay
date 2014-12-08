@@ -19,8 +19,7 @@ DEPEND="net-misc/curl
 	dev-libs/openssl
 	libnotify? ( x11-libs/libnotify )"
 RDEPEND="${DEPEND}
-	media-sound/cmus
-"
+	media-sound/cmus"
 
 src_prepare() {
 	eautoreconf
