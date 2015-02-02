@@ -2,7 +2,6 @@ overlay
 =======
 
 Personal Gentoo overlay.
-It contains packages supporting mainly robotic research.
 
 ##Scientific Packages
 
