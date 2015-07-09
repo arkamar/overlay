@@ -16,6 +16,7 @@ IUSE=""
 DEPEND=""
 RDEPEND="${DEPEND}
 	net-mail/ripmime
+	media-libs/pnglite
 	sys-apps/gawk
 	sys-process/parallel
 "
