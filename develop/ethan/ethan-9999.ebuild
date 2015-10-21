@@ -18,4 +18,5 @@ DEPEND="
 "
 RDEPEND="${DEPEND}
 	media-gfx/graphviz
+	net-misc/l7-protocols
 "
