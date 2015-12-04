@@ -17,7 +17,7 @@ IUSE="debug"
 
 RDEPEND="
 	dev-libs/glib:2
-	dev-libs/libgpg-error
+	dev-libs/json-glib
 	>=net-im/bitlbee-3.2.1[plugins]"
 DEPEND="${RDEPEND}
 	virtual/pkgconfig"
