@@ -45,19 +45,16 @@ src_unpack() {
 			die "unrecognized file in \${A}: ${filename}"
 		fi
 	done
+
+	epatch "${FILESDIR}/${PN}-5.1.1_p13-cdefs.patch"
 }
 
 src_prepare() {
 	mv core/*/* core/ || die
 	sed -e 's|#include <dlfcn.h>|\0\n#include <stddef.h>\n#include <string.h>\n|' \
 		-i extras/f2fs_utils/f2fs_utils.c  || die
-	sed -e '/cdefs\.h/d' \
-		-e '/#define.*__.*_DECLS/d' \
-		-i extras/ext4_utils/sha1.{h,c}
-	sed -e 's/__BEGIN_DECLS/#ifdef __cplusplus\nextern "C" {\n#endif/' \
-		-e 's/__END_DECLS/#ifdef __cplusplus\n}\n#endif/' \
-		-i extras/ext4_utils/sha1.h
 	mv arch/*/trunk/Makefile ./ || die
+	sed -i '1i#include <sys/sysmacros.h>' core/adb/usb_linux.c || die #580058
 	tc-export CC
 }
 
