@@ -1,0 +1,10 @@
+--- src/libwps/libwps.h	2016-06-22 21:28:10.124920664 +0000
++++ src2/libwps/libwps.h	2016-06-22 21:27:56.043920917 +0000
+@@ -17,6 +17,7 @@
+ #include <stdio.h>
+ #include <string.h>
+ #include <arpa/inet.h>
++#include <sys/types.h>
+ 
+ #define LIBWPS_MAX_STR_LEN 256
+ 
