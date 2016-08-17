@@ -15,6 +15,7 @@ IUSE=""
 
 DEPEND="
 	net-libs/libpcap
+	net-libs/ortp
 "
 RDEPEND="${DEPEND}
 	media-gfx/graphviz
