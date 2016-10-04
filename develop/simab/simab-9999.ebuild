@@ -15,9 +15,10 @@ IUSE=""
 
 DEPEND=""
 RDEPEND="${DEPEND}
-	net-mail/ripmime
-	sci-visualization/gnuplot
 	sys-apps/gawk
-	sys-apps/ucspi-tcp
+	net-analyzer/nmap[ncat]
 	sys-process/parallel
+	net-dns/bind-tools
+	sci-visualization/gnuplot
+	net-mail/ripmime
 "
