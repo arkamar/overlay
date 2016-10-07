@@ -11,11 +11,6 @@ Personal Gentoo overlay.
 - **ANN** - Nearest neighbor http://www.cs.umd.edu/~mount/ANN/
 - **Concorde** - TSP solver http://www.math.uwaterloo.ca/tsp/concorde/
 
-##Robotic Simulator
-
-- **Morse** http://www.openrobots.org/wiki/morse/
-- **Gazebo** http://gazebosim.org/
-
 ##Libraries
 
 - **SDFormat** - Simulation Description Format (SDF) parser https://bitbucket.org/osrf/sdformat
