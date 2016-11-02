@@ -14,6 +14,7 @@ EGIT_REPO_URI="https://github.com/Nuand/kalibrate-bladeRF.git"
 LICENSE="BSD-2"
 SLOT="0"
 KEYWORDS="
+	net-wireless/bladerf
 	sci-libs/fftw:3
 "
 IUSE=""
