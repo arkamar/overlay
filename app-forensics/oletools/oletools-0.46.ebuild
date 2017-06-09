@@ -8,7 +8,7 @@ inherit distutils-r1
 
 DESCRIPTION="python tools to analyze OLE and MS Office files"
 HOMEPAGE="http://www.decalage.info/python/oletools"
-SRC_URI="https://bitbucket.org/decalage/oletools/downloads/${P}.tar.gz"
+SRC_URI="https://bitbucket.org/decalage/${PN}/downloads/${P}.tar.gz"
 
 LICENSE="BSD MIT"
 SLOT="0"
