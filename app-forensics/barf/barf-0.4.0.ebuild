@@ -15,5 +15,8 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE=""
 
-DEPEND=""
+DEPEND="
+	dev-python/pyelftools
+	dev-python/pefiles
+	dev-python/networkx"
 RDEPEND="${DEPEND}"
