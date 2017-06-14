@@ -17,6 +17,8 @@ IUSE=""
 
 DEPEND="
 	dev-python/pyelftools
-	dev-python/pefiles
+	dev-python/pefile
+	dev-python/future
+	dev-libs/capstone
 	dev-python/networkx"
 RDEPEND="${DEPEND}"
