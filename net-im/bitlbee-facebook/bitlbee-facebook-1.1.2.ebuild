@@ -16,10 +16,9 @@ IUSE="debug"
 if [ "${PV}" = "9999" ] ; then
 	inherit	git-r3
 	EGIT_REPO_URI="https://github.com/bitlbee/bitlbee-facebook"
-	KEYWORDS=""
 else
 	SRC_URI="https://github.com/bitlbee/bitlbee-facebook/archive/v${PV}.tar.gz -> ${P}.tar.gz"
-	KEYWORDS="~amd64 ~x86"
+	KEYWORDS="amd64 ~x86"
 fi
 
 RDEPEND="
