@@ -1,10 +1,1 @@
 develop
-cross-arm-gentoo-linux-gnueabi
-cross-armv7-gentoo-linux-gnueabi
-cross-armv7a-hardfloat-linux-gnueabi
-cross-armv7a-hardfloat-linux-musl
-cross-armv7a-hardfloat-linux-musleabi
-cross-armv8-hardfloat-linux-musleabi
-cross-aarch64-hardfloat-linux-musleabi
-cross-aarch64-unknown-linux-musleabi
-cross-vc4-unknown-linux-newlib
