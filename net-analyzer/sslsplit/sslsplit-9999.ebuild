@@ -8,7 +8,7 @@ HOMEPAGE="http://www.roe.ch/SSLsplit"
 
 LICENSE="BSD-2"
 SLOT="0"
-IUSE=""
+IUSE="test"
 
 if [ "${PV}" == "9999" ] ; then
 	inherit git-r3
@@ -22,13 +22,20 @@ fi
 DEPEND="
 	elibc_musl? ( sys-libs/fts-standalone )
 	dev-libs/libevent[ssl,threads]
-	dev-libs/openssl"
+	dev-libs/openssl
+	test? ( dev-libs/check )"
 RDEPEND="${DEPEND}"
 
 src_compile() {
 	use elibc_musl && PKG_LIBS="-lfts"
 
 	FEATURES='' PKG_LIBS="${PKG_LIBS}" emake || die
+}
+
+src_test() {
+	use elibc_musl && PKG_LIBS="-lfts"
+
+	FEATURES='' PKG_LIBS="${PKG_LIBS}" emake test || die
 }
 
 src_install() {
