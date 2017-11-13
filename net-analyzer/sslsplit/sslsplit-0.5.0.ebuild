@@ -26,6 +26,11 @@ DEPEND="
 	test? ( dev-libs/check )"
 RDEPEND="${DEPEND}"
 
+src_prepare() {
+	sed -i 's/-D_FORTIFY_SOURCE=2 //g' GNUmakefile
+	eapply_user
+}
+
 src_compile() {
 	use elibc_musl && PKG_LIBS="-lfts"
 
