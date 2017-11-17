@@ -47,5 +47,5 @@ src_test() {
 src_install() {
 	use elibc_musl && PKG_LIBS="-lfts"
 
-	DESTDIR="${ED}" PKG_LIBS="${PKG_LIBS}" emake install || die
+	PKG_LIBS="${PKG_LIBS}" emake DESTDIR="${D}" PREFIX="${EROOT}usr" install || die
 }
