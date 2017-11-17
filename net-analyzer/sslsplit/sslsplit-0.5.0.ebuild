@@ -19,32 +19,33 @@ else
 	KEYWORDS="~amd64 ~x86"
 fi
 
-DEPEND="
+RDEPEND="
 	elibc_musl? ( sys-libs/fts-standalone )
 	dev-libs/libevent[ssl,threads]
-	dev-libs/openssl
+	dev-libs/openssl:*"
+DEPEND="${RDEPEND}
 	test? ( dev-libs/check )"
-RDEPEND="${DEPEND}"
 
 src_prepare() {
 	sed -i 's/-D_FORTIFY_SOURCE=2 //g' GNUmakefile
+	sed -i 's/FEATURES/SSLSPLIT_FEATURES/g' GNUmakefile version.c
 	eapply_user
 }
 
 src_compile() {
 	use elibc_musl && PKG_LIBS="-lfts"
 
-	FEATURES='' PKG_LIBS="${PKG_LIBS}" emake || die
+	PKG_LIBS="${PKG_LIBS}" emake || die
 }
 
 src_test() {
 	use elibc_musl && PKG_LIBS="-lfts"
 
-	FEATURES='' PKG_LIBS="${PKG_LIBS}" emake -j1 test || die
+	PKG_LIBS="${PKG_LIBS}" emake -j1 test || die
 }
 
 src_install() {
 	use elibc_musl && PKG_LIBS="-lfts"
 
-	DESTDIR="${ED}" FEATURES='' PKG_LIBS="${PKG_LIBS}" emake install || die
+	DESTDIR="${ED}" PKG_LIBS="${PKG_LIBS}" emake install || die
 }
