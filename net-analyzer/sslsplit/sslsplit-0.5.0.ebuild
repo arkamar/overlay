@@ -3,6 +3,8 @@
 
 EAPI=6
 
+inherit flag-o-matic
+
 DESCRIPTION="Transparent SSL/TLS interception"
 HOMEPAGE="http://www.roe.ch/SSLsplit"
 
@@ -10,7 +12,7 @@ LICENSE="BSD-2"
 SLOT="0"
 IUSE="test"
 
-if [ "${PV}" == "9999" ] ; then
+if [[ ${PV} == *9999 ]] ; then
 	inherit git-r3
 	EGIT_REPO_URI="https://github.com/droe/${PN}"
 	EGIT_BRANCH="develop"
@@ -22,30 +24,24 @@ fi
 RDEPEND="
 	elibc_musl? ( sys-libs/fts-standalone )
 	dev-libs/libevent[ssl,threads]
-	dev-libs/openssl:*"
+	dev-libs/openssl:0="
 DEPEND="${RDEPEND}
 	test? ( dev-libs/check )"
 
 src_prepare() {
+	default
+
+	use elibc_musl && append-libs "-lfts"
+
 	sed -i 's/-D_FORTIFY_SOURCE=2 //g' GNUmakefile
 	sed -i 's/FEATURES/SSLSPLIT_FEATURES/g' GNUmakefile version.c
-	eapply_user
-}
-
-src_compile() {
-	use elibc_musl && PKG_LIBS="-lfts"
-
-	PKG_LIBS="${PKG_LIBS}" emake || die
 }
 
 src_test() {
-	use elibc_musl && PKG_LIBS="-lfts"
-
-	PKG_LIBS="${PKG_LIBS}" emake -j1 test || die
+	emake -j1 test
 }
 
 src_install() {
-	use elibc_musl && PKG_LIBS="-lfts"
-
-	PKG_LIBS="${PKG_LIBS}" emake DESTDIR="${D}" PREFIX="${EROOT}usr" install || die
+	emake DESTDIR="${D}" PREFIX="${EPREFIX}usr" install
+	dodoc AUTHORS.md HACKING.md NEWS.md README.md
 }
