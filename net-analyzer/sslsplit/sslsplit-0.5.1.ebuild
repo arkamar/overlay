@@ -37,10 +37,6 @@ src_prepare() {
 	sed -i 's/FEATURES/SSLSPLIT_FEATURES/g' GNUmakefile version.c
 }
 
-src_test() {
-	emake -j1 test
-}
-
 src_install() {
 	emake DESTDIR="${D}" PREFIX="${EPREFIX}usr" install
 	dodoc AUTHORS.md HACKING.md NEWS.md README.md
