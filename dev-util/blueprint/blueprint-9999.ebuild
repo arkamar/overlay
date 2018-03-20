@@ -28,3 +28,7 @@ src_compile() {
 	BUILDDIR=out ./bootstrap.bash
 	out/blueprint.bash
 }
+
+src_install() {
+	dobin out/bin/{bpfmt,bpmodify,microfactory,minibp}
+}
