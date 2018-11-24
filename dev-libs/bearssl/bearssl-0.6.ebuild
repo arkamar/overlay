@@ -20,8 +20,8 @@ src_prepare() {
 	eapply_user
 
 	sed -i \
-		-e '/CFLAGS = -W -Wall -Os/iCFLAGS ?= -W -Wall -Os' \
-		-e '/CFLAGS = -W -Wall -Os/s/CFLAGS = -W -Wall -Os/CFLAGS +=/' \
+		-e '/CFLAGS = -W -Wall -Os/iCFLAGS ?= -Os' \
+		-e '/CFLAGS = -W -Wall -Os/s/CFLAGS = -W -Wall -Os/CFLAGS += -W -Wall/' \
 		conf/*.mk
 }
 
