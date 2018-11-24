@@ -10,7 +10,7 @@ SRC_URI="https://bearssl.org/${P}.tar.gz"
 LICENSE="MIT"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE=""
+IUSE="static-libs"
 
 DEPEND=""
 RDEPEND="${DEPEND}"
@@ -28,7 +28,10 @@ src_prepare() {
 src_install() {
 	dobin    build/brssl
 	dolib.so build/libbearssl.so
-	dolib.a  build/libbearssl.a
+	if use static-libs
+	then
+		dolib.a  build/libbearssl.a
+	fi
 	doheader inc/*.h
 	dodoc README.txt
 }
