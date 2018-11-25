@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>arkamar@atlas.cz</email>
+		<name>Petr Vaněk</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
+	<longdescription lang="en">
+		BearSSL is an implementation of the SSL/TLS protocol (RFC 5246) written in C.
+	</longdescription>
+	<upstream>
+		<maintainer status="active">
+			<email>pornin@bolet.org</email>
+			<name>Thomas Pornin</name>
+		</maintainer>
+	</upstream>
+</pkgmetadata>
