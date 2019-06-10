@@ -25,6 +25,7 @@ DEPEND="
 	virtual/pkgconfig
 "
 RDEPEND="
+	app-crypt/gcr
 	!sci-chemistry/surf
 	${COMMON_DEPEND}
 	x11-apps/xprop
