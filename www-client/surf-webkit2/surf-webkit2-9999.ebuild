@@ -6,7 +6,7 @@ EAPI=5
 inherit eutils savedconfig toolchain-funcs
 
 DESCRIPTION="a simple web browser based on WebKit/GTK+"
-HOMEPAGE="http://surf.suckless.org/"
+HOMEPAGE="https://surf.suckless.org/"
 #SRC_URI="git://git.suckless.org/surf"
 
 LICENSE="MIT"
@@ -14,10 +14,10 @@ SLOT="0"
 KEYWORDS=""
 
 COMMON_DEPEND="
-	dev-libs/glib
+	dev-libs/glib:2
 	net-libs/libsoup
-	net-libs/webkit-gtk
-	x11-libs/gtk+
+	net-libs/webkit-gtk:4
+	x11-libs/gtk+:3
 	x11-libs/libX11
 "
 DEPEND="
@@ -25,11 +25,13 @@ DEPEND="
 	virtual/pkgconfig
 "
 RDEPEND="
-	app-crypt/gcr
 	!sci-chemistry/surf
 	${COMMON_DEPEND}
-	x11-apps/xprop
-	x11-misc/dmenu
+	!savedconfig? (
+		net-misc/curl
+		x11-apps/xprop
+		x11-misc/dmenu
+	)
 "
 #	!savedconfig? (
 #		net-misc/curl
