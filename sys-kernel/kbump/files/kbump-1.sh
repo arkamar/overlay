@@ -32,3 +32,8 @@ if [ "${1}" = build ]
 then
 	nice -n10 make -j5 O="${LINUX_BUILD}"
 fi
+
+if [ "${1}" = install ]
+then
+	nice -n10 make -j5 O="${LINUX_BUILD}" install
+fi
