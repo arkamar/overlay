@@ -1,3 +1,5 @@
 amd64 default/linux/amd64/17.0/musl/hardened/s6 exp
 amd64 default/linux/amd64/17.1/no-multilib/hardened/s6 exp
 amd64 default/linux/amd64/17.1/no-multilib/hardened/selinux/s6 exp
+
+arm default/linux/arm/17.0/musl/armv7a/hardened/s6 exp
