@@ -1,19 +1,21 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
-EAPI=5
+EAPI=7
 
-inherit eutils autotools git-2
+inherit toolchain-funcs git-r3
 
 DESCRIPTION="Bitlbee contact list for irc it"
 HOMEPAGE="https://github.com/arkamar/bbcl"
 EGIT_REPO_URI="https://github.com/arkamar/bbcl"
 
-LICENSE="GPL-2 LGPL-2.1 BSD-2"
+LICENSE="MIT"
 SLOT="0"
 KEYWORDS=""
-IUSE="debug"
 
 RDEPEND=""
 DEPEND="${RDEPEND}"
+
+src_configure() {
+	tc-export CC
+}
