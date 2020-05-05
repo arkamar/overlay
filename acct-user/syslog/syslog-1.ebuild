@@ -6,7 +6,7 @@ EAPI=7
 inherit acct-user
 
 DESCRIPTION="syslog user"
-ACCT_USER_ID=999
+ACCT_USER_ID=-1
 ACCT_USER_GROUPS=( syslog )
 
 acct-user_add_deps
