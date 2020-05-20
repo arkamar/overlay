@@ -15,6 +15,6 @@ KEYWORDS=""
 IUSE=""
 
 src_install() {
-	dosbin s6rcupdate kbump
+	dosbin cpu-max-freq s6rcupdate kbump
 	dobin play-from-youtube run-sslsplit s6rcgraph
 }
