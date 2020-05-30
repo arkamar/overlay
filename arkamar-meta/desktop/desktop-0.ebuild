@@ -31,5 +31,6 @@ RDEPEND="
 	x11-misc/tabbed
 	x11-misc/xclip
 	x11-terms/st
+	x11-themes/comix-xcursors
 	x11-wm/dwm
 "
