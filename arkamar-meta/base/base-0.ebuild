@@ -20,6 +20,7 @@ EDITOR="
 
 RDEPEND="${EDITOR}
 	app-admin/entr
+	app-admin/pass[dmenu,zsh-completion]
 	app-admin/sudo
 	app-misc/tmux
 	app-shells/gentoo-zsh-completions
