@@ -5,7 +5,7 @@ EAPI=7
 
 PYTHON_COMPAT=( python3_{6,7,8,9} )
 
-inherit qmake-utils xdg-utils python-single-r1
+inherit cmake xdg-utils python-single-r1
 
 DESCRIPTION="A Qt and C++ GUI for radare2 reverse engineering framework"
 HOMEPAGE="https://cutter.re https://github.com/radareorg/cutter/"
@@ -28,21 +28,24 @@ DEPEND="
 
 RDEPEND="${DEPEND}"
 
-PATCHES=(
-	"${FILESDIR}/${PN}-1.10.3-python3-config.patch"
-)
+CMAKE_USE_DIR="${S}/src"
 
-src_configure() {
-	local myqmakeargs=(
-		CUTTER_ENABLE_PYTHON=true
-		PREFIX=\'${EPREFIX}/usr\'
-	)
-
-	eqmake5 "${myqmakeargs[@]}" src
+src_prepare() {
+	eapply_user
+	# Transaltion does not work yet
+	sed -i /Translations/d src/CMakeLists.txt || die
+	cmake_src_prepare
 }
 
-src_install() {
-	emake INSTALL_ROOT="${D}" install
+src_configure() {
+	local mycmakeargs=(
+		-DCUTTER_USE_ADDITIONAL_RADARE2_PATHS=OFF
+		-DCUTTER_ENABLE_PYTHON=ON
+		-DCUTTER_ENABLE_KSYNTAXHIGHLIGHTING=OFF
+		-DCUTTER_ENABLE_GRAPHVIZ=OFF
+	)
+
+	cmake_src_configure
 }
 
 pkg_postinst() {
