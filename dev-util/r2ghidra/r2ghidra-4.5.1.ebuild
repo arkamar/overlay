@@ -14,6 +14,7 @@ SRC_URI="
 	https://github.com/radareorg/ghidra/archive/${GHIDRA_COMMIT}.tar.gz -> ghidra-${GHIDRA_COMMIT}.tar.gz
 "
 
+IUSE="cutter"
 LICENSE="LGPL-3 Apache-2.0"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
@@ -21,6 +22,10 @@ KEYWORDS="~amd64 ~x86"
 DEPEND="
 	dev-libs/pugixml
 	dev-libs/radare2
+	cutter? (
+		dev-qt/qtwidgets
+		dev-util/cutter
+	)
 "
 RDEPEND="${DEPEND}"
 BDEPEND="
@@ -40,6 +45,9 @@ src_unpack() {
 src_configure() {
 	local mycmakeargs=(
 		-DUSE_SYSTEM_PUGIXML=ON
+		-DBUILD_CUTTER_PLUGIN="$(usex cutter)"
+		# This has to be fixed somehow
+		-DCUTTER_SOURCE_DIR=/usr/include/cutter
 	)
 	cmake_src_configure
 }
