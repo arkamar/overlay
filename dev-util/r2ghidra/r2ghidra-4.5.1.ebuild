@@ -21,7 +21,7 @@ KEYWORDS="~amd64 ~x86"
 
 DEPEND="
 	dev-libs/pugixml
-	dev-util/radare2
+	dev-util/radare2:=
 	cutter? (
 		dev-qt/qtwidgets
 		dev-util/cutter
@@ -48,6 +48,7 @@ src_configure() {
 		-DBUILD_CUTTER_PLUGIN="$(usex cutter)"
 		# This has to be fixed somehow
 		-DCUTTER_SOURCE_DIR=/usr/include/cutter
+		-DRADARE2_INSTALL_PLUGDIR="$(r2 -H R2_LIBR_PLUGINS)"
 	)
 	cmake_src_configure
 }
