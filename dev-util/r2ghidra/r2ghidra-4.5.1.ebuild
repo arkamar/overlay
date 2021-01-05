@@ -21,7 +21,7 @@ KEYWORDS="~amd64 ~x86"
 
 DEPEND="
 	dev-libs/pugixml
-	dev-libs/radare2
+	dev-util/radare2
 	cutter? (
 		dev-qt/qtwidgets
 		dev-util/cutter
