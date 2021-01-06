@@ -15,6 +15,7 @@ LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
+IUSE="graphviz"
 
 DEPEND="
 	${PYTHON_DEPS}
@@ -24,6 +25,7 @@ DEPEND="
 	dev-qt/qtsvg:5
 	dev-qt/qtwidgets:5
 	dev-util/radare2
+	graphviz? ( media-gfx/graphviz )
 "
 
 RDEPEND="${DEPEND}"
@@ -42,7 +44,7 @@ src_configure() {
 		-DCUTTER_USE_ADDITIONAL_RADARE2_PATHS=OFF
 		-DCUTTER_ENABLE_PYTHON=ON
 		-DCUTTER_ENABLE_KSYNTAXHIGHLIGHTING=OFF
-		-DCUTTER_ENABLE_GRAPHVIZ=OFF
+		-DCUTTER_ENABLE_GRAPHVIZ=$(usex graphviz)
 	)
 
 	cmake_src_configure
