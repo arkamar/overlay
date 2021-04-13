@@ -24,4 +24,7 @@ BDEPEND=""
 
 src_install() {
 	dobin topcmd gitwatch
+
+	insinto /usr/share/zsh/site-functions
+	doins zsh/_*
 }
