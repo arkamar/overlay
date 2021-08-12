@@ -17,6 +17,8 @@ RDEPEND="
 	app-portage/gentoolkit
 	app-portage/portage-utils
 	app-portage/repoman
+	dev-go/get-ego-vendor
 	dev-util/pkgcheck
+	dev-util/pkgdev
 	www-client/pybugz
 "
