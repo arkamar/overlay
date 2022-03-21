@@ -5,7 +5,6 @@ EAPI=7
 
 inherit cmake
 
-
 GHIDRA_COMMIT='3eb45fdeb01a1404c2f92db9a33e04faf0c57800'
 
 DESCRIPTION="Deep ghidra decompiler integration for rizin"
