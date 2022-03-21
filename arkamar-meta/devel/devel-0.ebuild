@@ -14,10 +14,10 @@ IUSE=""
 
 RDEPEND="
 	app-misc/binwalk
-	app-misc/tio
 	app-text/dos2unix
 	dev-util/ctags
 	dev-util/radare2
 	dev-util/strace
+	net-dialup/tio
 	sys-devel/gdb
 "
