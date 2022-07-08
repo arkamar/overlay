@@ -1,10 +1,9 @@
 # Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
-EAPI=6
+EAPI=8
 
-inherit autotools git-r3
+inherit git-r3 toolchain-funcs
 
 DESCRIPTION="Hex to Bin convertor"
 HOMEPAGE="https://github.com/arkamar/h2b"
