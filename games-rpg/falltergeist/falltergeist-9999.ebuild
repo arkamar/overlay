@@ -1,12 +1,15 @@
 # Copyright 2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 inherit cmake
 
 DESCRIPTION="Opensource crossplatform Fallout 2™ game engine writen in C++ and SDL"
-HOMEPAGE="https://falltergeist.org/ https://github.com/falltergeist/falltergeist"
+HOMEPAGE="
+	https://falltergeist.org/
+	https://github.com/falltergeist/falltergeist
+"
 
 LICENSE="GPL-3"
 SLOT="0"
