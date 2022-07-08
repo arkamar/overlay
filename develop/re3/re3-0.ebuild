@@ -6,7 +6,6 @@ EAPI=7
 DESCRIPTION="Dependencies for re3"
 HOMEPAGE="https://github.com/GTAmodding/re3"
 
-LICENSE=""
 SLOT="0"
 KEYWORDS="amd64"
 
