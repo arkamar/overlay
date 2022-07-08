@@ -3,19 +3,16 @@
 
 EAPI=7
 
-DESCRIPTION=""
-HOMEPAGE=""
-SRC_URI=""
+DESCRIPTION="Dependencies for re3"
+HOMEPAGE="https://github.com/GTAmodding/re3"
 
 LICENSE=""
 SLOT="0"
 KEYWORDS="amd64"
 
-DEPEND=""
 RDEPEND="
 	media-libs/glfw
 	media-libs/openal
 	media-sound/mpg123
 	virtual/opengl
 "
-BDEPEND=""
