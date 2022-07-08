@@ -1,9 +1,9 @@
 # Copyright 2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
-DESCRIPTION=""
+DESCRIPTION="Tool similar to well knonw watch"
 HOMEPAGE="https://github.com/arkamar/topcmd"
 
 if [[ "${PV}" == *9999 ]] ; then
@@ -13,7 +13,7 @@ else
 	SRC_URI=""
 fi
 
-LICENSE=""
+LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS=""
 IUSE=""
