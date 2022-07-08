@@ -20,7 +20,6 @@ else
 	KEYWORDS="~amd64 ~x86"
 fi
 
-
 DEPEND="
 	media-libs/glew
 	media-libs/glm
@@ -30,4 +29,3 @@ DEPEND="
 	sys-libs/zlib
 "
 RDEPEND="${DEPEND}"
-BDEPEND=""
