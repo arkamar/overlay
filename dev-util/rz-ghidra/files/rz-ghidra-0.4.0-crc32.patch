@@ -1,0 +1,17 @@
+The -march=native flag introduces a __CRC32__ macro. Fix taken from [1].
+
+[1] https://github.com/rizinorg/rz-ghidra/issues/284#issuecomment-1110672432
+
+diff --git a/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/crc32.hh b/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/crc32.hh
+--- a/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/crc32.hh
++++ b/ghidra/ghidra/Ghidra/Features/Decompiler/src/decompile/cpp/crc32.hh
+@@ -16,8 +16,8 @@
+ /// \file crc32.hh
+ /// \brief Table and function for computing a CRC32
+ 
+-#ifndef __CRC32__
+-#define __CRC32__
++#ifndef __CRC32A__
++#define __CRC32A__
+ 
+ #include "types.h"
