@@ -1,7 +1,7 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2022 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=8
 
 DESCRIPTION="My local instant messenger"
 HOMEPAGE=""
@@ -12,7 +12,7 @@ SLOT="0"
 KEYWORDS="amd64 x86"
 IUSE=""
 
-DEPEND="
+RDEPEND="
 	net-im/bitlbee
 	net-im/bitlbee-facebook
 	net-im/cii
@@ -20,4 +20,3 @@ DEPEND="
 	net-irc/ii
 	app-misc/tmux
 "
-RDEPEND="${DEPEND}"
