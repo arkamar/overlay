@@ -12,11 +12,7 @@ SLOT="0"
 KEYWORDS="amd64 x86"
 
 RDEPEND="
-	app-misc/tmux
-	net-im/bbcl
-	net-im/bitlbee
-	net-im/bitlbee-facebook
-	net-im/cii
+	net-im/iife
 	net-irc/ii
 	net-misc/s6-networking
 "
