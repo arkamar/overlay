@@ -4,8 +4,7 @@
 EAPI=7
 
 DESCRIPTION=""
-HOMEPAGE=""
-SRC_URI=""
+HOMEPAGE="https://wiki.gentoo.org/wiki/No_homepage"
 
 LICENSE="metapackage"
 SLOT="0"
