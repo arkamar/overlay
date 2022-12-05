@@ -3,7 +3,7 @@
 
 EAPI=7
 
-DESCRIPTION=""
+DESCRIPTION="Some tools I use for dev"
 HOMEPAGE="https://wiki.gentoo.org/wiki/No_homepage"
 
 LICENSE="metapackage"
