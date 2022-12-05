@@ -9,7 +9,6 @@ HOMEPAGE="https://wiki.gentoo.org/wiki/No_homepage"
 LICENSE="metapackage"
 SLOT="0"
 KEYWORDS="amd64"
-IUSE=""
 
 RDEPEND="
 	app-admin/conky
