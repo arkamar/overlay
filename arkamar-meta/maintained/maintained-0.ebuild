@@ -3,7 +3,7 @@
 
 EAPI=8
 
-DESCRIPTION=""
+DESCRIPTION="Packages maintained by me and optional dependencies"
 HOMEPAGE="https://wiki.gentoo.org/wiki/No_homepage"
 
 LICENSE="metapackage"
