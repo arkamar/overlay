@@ -13,6 +13,7 @@ KEYWORDS="amd64"
 RDEPEND="
 	app-portage/eix
 	app-portage/gentoolkit
+	app-portage/nattka
 	app-portage/portage-utils
 	dev-go/get-ego-vendor
 	dev-util/pkgcheck
