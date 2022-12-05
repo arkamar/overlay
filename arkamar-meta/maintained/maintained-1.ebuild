@@ -16,7 +16,6 @@ SYNAPSE_DEV_DEPS="dev-python/psycopg:2"
 RDEPEND="
 	${RSPAMD_DEV_DEPS}
 	${SYNAPSE_DEV_DEPS}
-	dev-db/keydb
 	dev-db/redis
 	dev-libs/hyperscan
 	mail-filter/rspamd
