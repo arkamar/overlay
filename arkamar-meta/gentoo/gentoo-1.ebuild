@@ -5,6 +5,7 @@ EAPI=7
 
 DESCRIPTION=""
 
+LICENSE="metapackage"
 SLOT="0"
 KEYWORDS="amd64"
 
