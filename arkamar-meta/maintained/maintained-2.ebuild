@@ -11,7 +11,10 @@ SLOT="0"
 KEYWORDS="amd64"
 
 RSPAMD_DEV_DEPS="dev-libs/jemalloc"
-SYNAPSE_DEV_DEPS="dev-python/psycopg:2"
+SYNAPSE_DEV_DEPS="
+	dev-python/psycopg:2
+	dev-python/pyicu
+"
 
 RDEPEND="
 	${RSPAMD_DEV_DEPS}
