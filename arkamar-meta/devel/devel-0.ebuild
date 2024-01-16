@@ -13,9 +13,9 @@ KEYWORDS="amd64"
 RDEPEND="
 	app-misc/binwalk
 	app-text/dos2unix
+	dev-debug/gdb
 	dev-util/ctags
 	dev-util/radare2
 	dev-util/strace
 	net-dialup/tio
-	sys-devel/gdb
 "
