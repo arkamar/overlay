@@ -23,7 +23,7 @@ RDEPEND="${EDITOR}
 	app-shells/gentoo-zsh-completions
 	app-shells/zsh
 	app-text/tree
-	dev-util/strace
+	dev-debug/strace
 	dev-vcs/git
 	mail-client/mutt
 	net-misc/chrony
