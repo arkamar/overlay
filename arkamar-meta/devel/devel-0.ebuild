@@ -14,8 +14,8 @@ RDEPEND="
 	app-misc/binwalk
 	app-text/dos2unix
 	dev-debug/gdb
+	dev-debug/strace
 	dev-util/ctags
 	dev-util/radare2
-	dev-util/strace
 	net-dialup/tio
 "
