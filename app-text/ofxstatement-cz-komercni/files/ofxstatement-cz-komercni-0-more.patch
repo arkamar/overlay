@@ -1,0 +1,29 @@
+From 80d88b97c4276878f34acd5d1491c51c644a5921 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Petr=20Van=C4=9Bk?= <arkamar@atlas.cz>
+Date: Mon, 5 Feb 2024 13:07:31 +0100
+Subject: [PATCH] Add more transaction types
+
+---
+ src/ofxstatement/plugins/komercni.py | 4 +++-
+ 1 file changed, 3 insertions(+), 1 deletion(-)
+
+diff --git a/src/ofxstatement/plugins/komercni.py b/src/ofxstatement/plugins/komercni.py
+index d8baed8..4b631b8 100644
+--- a/src/ofxstatement/plugins/komercni.py
++++ b/src/ofxstatement/plugins/komercni.py
+@@ -81,9 +81,11 @@ class KomercniParser(StatementParser):
+             elif desc in ('Card purchase', 'Contactless card purchase',
+                           'Credit of purchase', 'Dobití mobilního telefonu',
+                           'Internet mobile payment', 'Internet purchase 3D Secure',
+-                          'Mobilní platba na internetu',
++                          'MO/TO transakce',
++                          'Mobilní platba', 'Mobilní platba na internetu',
+                           'Nákup bezkontaktní kartou', 'Nákup na internetu',
+                           'Nákup na internetu 3D Secure', 'Nákup u obchodníka',
++                          'Nákup na tankomatu',
+                           'Opakovaná platba', 'Opakovaná platba tokenem',
+                           'Purchase on the internet',
+                           'Recharge of mobile phone', 'Recurring payment',
+-- 
+2.43.0
+
