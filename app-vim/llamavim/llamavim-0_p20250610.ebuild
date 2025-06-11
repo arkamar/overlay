@@ -3,6 +3,8 @@
 
 EAPI=8
 
+VIM_PLUGIN_VIM_VERSION=9.1
+
 inherit vim-plugin
 
 MY_PN="llama.vim"
