@@ -1,0 +1,87 @@
+From b96748a2d8fa475d37816e8f29dc1a8c77dceac5 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Petr=20Van=C4=9Bk?= <arkamar@atlas.cz>
+Date: Thu, 25 Dec 2025 18:06:52 +0100
+Subject: [PATCH] fix musl libc compatibility
+
+This commit contains multiple changes which ensure compatibility with
+musl libc.
+
+- Explicitly add <linux/falloc.h> header file, because glibc includes it
+  indirectly via other headers.
+- Include <sched.h> and define _GNU_SOURCE in order to have cpu_set_t
+  available.
+- Cast parameter in connect() for better portability.
+
+Library and programs fail to compile without these changes.
+
+Signed-off-by: Petr Vaněk <arkamar@atlas.cz>
+Upstream-PR: https://github.com/ublk-org/ublksrv/pull/171
+
+diff --git a/demo_event.c b/demo_event.c
+index c0efd96..01e91fb 100644
+--- a/demo_event.c
++++ b/demo_event.c
+@@ -17,6 +17,8 @@
+ #include <sys/types.h>
+ #include <unistd.h>
+ 
++#include <linux/falloc.h>
++
+ #include "ublksrv.h"
+ #include "ublksrv_utils.h"
+ #include "ublksrv_aio.h"
+diff --git a/include/ublksrv.h b/include/ublksrv.h
+index 9d8f388..4e5e185 100644
+--- a/include/ublksrv.h
++++ b/include/ublksrv.h
+@@ -13,6 +13,7 @@
+ 
+ #include <stdbool.h>
+ #include <assert.h>
++#include <sched.h>
+ 
+ #include "liburing.h"
+ 
+diff --git a/targets/nbd/nbd-client.c b/targets/nbd/nbd-client.c
+index 35e239d..c82d3c1 100644
+--- a/targets/nbd/nbd-client.c
++++ b/targets/nbd/nbd-client.c
+@@ -128,7 +128,7 @@ int openunix(const char *path) {
+ 		return -1;
+ 	};
+ 
+-	if (connect(sock, &un_addr, sizeof(un_addr)) == -1) {
++	if (connect(sock, (struct sockaddr*)&un_addr, sizeof(un_addr)) == -1) {
+ 		err_nonfatal("CONNECT failed");
+ 		close(sock);
+ 		return -1;
+diff --git a/targets/ublk.loop.cpp b/targets/ublk.loop.cpp
+index f68c353..0924a0d 100644
+--- a/targets/ublk.loop.cpp
++++ b/targets/ublk.loop.cpp
+@@ -4,6 +4,8 @@
+ 
+ #include <poll.h>
+ #include <sys/epoll.h>
++#include <linux/falloc.h>
++
+ #include "ublksrv_tgt.h"
+ 
+ struct loop_tgt_data {
+diff --git a/utils/ublk_user_id.c b/utils/ublk_user_id.c
+index 75b5661..57b0066 100644
+--- a/utils/ublk_user_id.c
++++ b/utils/ublk_user_id.c
+@@ -1,5 +1,9 @@
+ // SPDX-License-Identifier: MIT or GPL-2.0-only
+ 
++#ifndef _GNU_SOURCE
++#define _GNU_SOURCE
++#endif
++
+ #include <stdio.h>
+ #include <stdlib.h>
+ #include "ublksrv.h"
+-- 
+2.51.2
+
